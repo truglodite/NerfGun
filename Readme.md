@@ -1,7 +1,7 @@
 # Nerftec... deeper down the rabbit hole.
 
 ## Overview
-This is a Nerf gun chronograph/computer project, that uses an Arduino Pro-mini (328p/5V/16mhz), a single IR emitter/detector, and an SSD1306 OLED display to show remaining rounds, voltage, fps, and rpm. The code also displays averages and dart data tables with highlighted max and min values for each clip after it is emptied. Code is fairly optimized for performance; it is non-blocking and uses direct port access (versus digitalRead/Write) with Timer1 input capture methods, ported for a 16MHz m328 target. An OPL550 IR sensor with an OP240a IR emitter were tested by author of this code (100ohm on the emitter, ~1" from sensor). The pair are mechanically matched and have sub clock (at 16mhz) response times, which goes well with the +/-65ns input capture methods used (any measurement error is due to dart length variances). Other displays and/or targets may be used... just be mindful of your portD and Timer1 pinouts.
+This is a Nerf gun chronograph/computer project, that uses an Arduino Pro-mini (328p/5V/16mhz), a single IR emitter/detector, battery voltage divider, and an SSD1306 OLED display to show remaining rounds, voltage, fps, and rpm. The code also displays averages and dart data tables with highlighted max and min values for each clip after it is emptied. Code is fairly optimized for performance; it is non-blocking and uses direct port access (versus digitalRead/Write) with Timer1 input capture methods, ported for a 16MHz m328 target. An OPL550 IR sensor with an OP240a IR emitter were tested by author of this code (100ohm on the emitter, ~1" from sensor). The pair are mechanically matched and have sub clock (at 16mhz) response times, which goes well with the +/-65ns input capture methods used (any measurement error is due to dart length variances). Other displays and/or targets may be used... just be mindful of your portD and Timer1 pinouts.
 
 ## Operation
 
@@ -32,8 +32,7 @@ D6 | LED indicator
 D7 | 5V Buzzer
 D8 | IR Sensor signal
 
-*D0-8 are ported for m328 (Uno, etc).*
-*Edit code as needed to match portD & Timer1 pinouts for other targets.*
+*D0-8 are ported for m328 (Uno, etc). Edit code as needed to match portD & Timer1 pinouts for other targets.*
 
 ## Installation
 The file structure is intended for direct use with PlatformIO. Simply download the zip, extract, open in PIO, and build/upload. The code is compatible with Arduino IDE if you wish to compile with that instead; you must create the necessary file structure for Arduino (sketch name = parent directory name).
